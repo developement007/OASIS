@@ -1,43 +1,39 @@
-const helloBtn = document.getElementById('helloBtn');
-const helloOut = document.getElementById('helloOut');
-helloBtn?.addEventListener('click', async () => {
-  helloBtn.disabled = true;
-  helloOut.textContent = 'Loading...';
-  try {
-    const res = await fetch('/api/hello');
-    const json = await res.json();
-    helloOut.textContent = JSON.stringify(json, null, 2);
-  } catch (err) {
-    helloOut.textContent = String(err);
-  } finally {
-    helloBtn.disabled = false;
+document.addEventListener('DOMContentLoaded', () => {
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Typewriter effect on intro screen
+  const tw = document.getElementById('typewriter');
+  if (tw) {
+    const text = 'protocol initiated: OASIS';
+    let i = 0;
+    const interval = setInterval(() => {
+      tw.textContent = text.slice(0, i + 1);
+      i++;
+      if (i === text.length) {
+        clearInterval(interval);
+        document.body.addEventListener('click', () => {
+          window.location.href = 'home.html';
+        }, { once: true });
+      }
+    }, 80);
+  }
+
+  // Contact form handler
+  const contactForm = document.getElementById('contactForm');
+  const contactOut = document.getElementById('contactOut');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      contactOut.textContent = 'Sending...';
+      try {
+        const res = await fetch('/form/submit', { method: 'POST', body: new FormData(contactForm) });
+        const json = await res.json();
+        contactOut.textContent = JSON.stringify(json, null, 2);
+        if (json.ok) contactForm.reset();
+      } catch (err) {
+        contactOut.textContent = String(err);
+      }
+    });
   }
 });
-
-// Contact form
-const contactForm = document.getElementById('contactForm');
-const contactOut = document.getElementById('contactOut');
-contactForm?.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  contactOut.textContent = 'Sending...';
-  try {
-    const res = await fetch('/form/submit', { method:'POST', body:new FormData(contactForm) });
-    const json = await res.json();
-    contactOut.textContent = JSON.stringify(json, null, 2);
-    if (json.ok) contactForm.reset();
-  } catch (err) {
-    contactOut.textContent = String(err);
-  }
-});
-
-// Mobile nav
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger?.addEventListener('click', () => {
-  const open = navLinks.style.display === 'flex';
-  navLinks.style.display = open ? 'none' : 'flex';
-  hamburger.setAttribute('aria-expanded', String(!open));
-});
-
-// Year
-document.getElementById('year').textContent = new Date().getFullYear();
