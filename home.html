@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OASIS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="home">
+  <header class="container nav">
+    <h1 class="logo">OASIS</h1>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <h1>Welcome to OASIS</h1>
+      <p>Your minimal, secure, and scalable protocol for the future.</p>
+    </section>
+
+    <section id="features" class="container section">
+      <h2>Features</h2>
+      <div class="grid">
+        <div class="card">Fast, reliable hosting</div>
+        <div class="card">Built-in serverless functions</div>
+        <div class="card">Custom domain support</div>
+        <div class="card">Dark mode design</div>
+        <div class="card">Mobile-friendly</div>
+        <div class="card">Fully open source</div>
+      </div>
+    </section>
+
+    <section id="pricing" class="container section">
+      <h2>Pricing</h2>
+      <div class="grid">
+        <div class="card">Free Tier</div>
+        <div class="card highlight">Pro Tier</div>
+        <div class="card">Enterprise</div>
+      </div>
+    </section>
+
+    <section id="faq" class="container section">
+      <h2>FAQ</h2>
+      <details class="card"><summary>What is OASIS?</summary><p>A minimal SaaS-style starter.</p></details>
+      <details class="card"><summary>Is it free?</summary><p>Yes, under MIT license.</p></details>
+    </section>
+
+    <section id="contact" class="container section">
+      <h2>Contact</h2>
+      <form id="contactForm" class="form card">
+        <label>Name</label><input name="name" required>
+        <label>Email</label><input name="email" type="email" required>
+        <label>Message</label><textarea name="message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+        <pre id="contactOut" class="codeblock"></pre>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>© <span id="year"></span> OASIS. All rights reserved.</p>
+  </footer>
+  <script src="/app.js"></script>
+</body>
+</html>
