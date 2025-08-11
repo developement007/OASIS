@@ -1,14 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OASIS - Protocol Initiation</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OASIS Init</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: 'Inconsolata', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-size: 1.5rem;
+      cursor: crosshair;
+    }
+    #typewriter {
+      white-space: pre;
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css" />
 </head>
-<body class="intro-screen">
+<body>
   <div id="typewriter"></div>
-  <script src="/app.js"></script>
-</body>
-</html>
+
+  <script>
+    const text = "protocol initiated: OASIS";
